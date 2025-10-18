@@ -1,5 +1,9 @@
 {
   "ci": {
+    "collect": {
+      "url": ["https://your-site-url.com"],
+      "numberOfRuns": 1
+    },
     "assert": {
       "assertions": {
         "categories:performance": ["error", { "minScore": 0.9 }],
@@ -10,6 +14,9 @@
         "uses-responsive-images": "warn",
         "uses-text-compression": "warn"
       }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
     }
   }
 }
