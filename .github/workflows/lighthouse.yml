@@ -20,7 +20,7 @@ jobs:
       - name: Ensure Lighthouse config is in expected path
         run: |
           mkdir -p /home/runner/work/portfolio-site/portfolio-site
-          cp ./.lighthouserc.json /home/runner/work/portfolio-site/portfolio-site/.lighthouserc.json
+          cp "$GITHUB_WORKSPACE/.lighthouserc.json" /home/runner/work/portfolio-site/portfolio-site/.lighthouserc.json
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
