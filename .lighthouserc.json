@@ -2,7 +2,12 @@
   "ci": {
     "collect": {
       "url": ["$SITE_URL"],
-      "numberOfRuns": 1
+      "numberOfRuns": 1,
+      "settings": {
+        "chromeFlags": "--no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1365,850",
+        "maxWaitForFcp": 30000,
+        "maxWaitForLoad": 45000
+      }
     },
     "assert": {
       "assertions": {
