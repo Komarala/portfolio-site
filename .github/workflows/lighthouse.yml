@@ -39,4 +39,4 @@ jobs:
             ${{ secrets.SITE_URL }}
           uploadArtifacts: true
           configPath: ./.lighthouserc.json
-          temporaryPublicStorage: true
+          temporaryPublicStorage: true        
