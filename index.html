@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Portfolio</title>
+        <meta name="title" content="My Portfolio" />
+        <meta name="description" content="A responsive portfolio showcasing projects, skills, and contact info." />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="canonical" href="https://example.com/" />
+
+        <!-- Preconnect to third-party CDNs -->
+        <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+        <link rel="preconnect" href="https://unpkg.com" crossorigin>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="My Portfolio" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://example.com/assets/hero.svg" />
+        <meta property="og:url" content="https://example.com/" />
+        <meta property="og:description" content="A responsive portfolio showcasing projects, skills, and contact info." />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="My Portfolio" />
+        <meta name="twitter:description" content="A responsive portfolio showcasing projects, skills, and contact info." />
+        <meta name="twitter:image" content="https://example.com/assets/hero.svg" />
+
+        <!-- Preload critical fonts -->
+        <link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <!-- Preload LCP hero image -->
+        <link rel="preload" as="image" href="assets/hero.svg" imagesrcset="assets/hero.svg" type="image/svg+xml" />
+            <!-- Tailwind via CDN for now to avoid local build issues -->
+            <script src="https://cdn.tailwindcss.com"></script>
+        <link href="css/styles.css" rel="stylesheet" />
+            <!-- AOS CSS -->
+            <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+            <!-- Plausible Analytics (replace data-domain with your domain) -->
+            <script defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script>
+            <!-- PWA Manifest -->
+            <link rel="manifest" href="/manifest.json" />
+    </head>
+        <body class="text-slate-900 bg-white">
+        <!-- Hero -->
+            <header id="hero" class="relative overflow-hidden" data-aos="fade-up">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-24 sm:pb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                            Welcome to My Portfolio
+                        </h1>
+                        <p class="mt-4 text-base sm:text-lg text-slate-600">
+                            A showcase of my work, skills, and interests.
+                        </p>
+                        <div class="mt-6 flex gap-3">
+                            <a href="#projects" class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-white text-sm font-medium hover:bg-blue-700">View Projects</a>
+                            <a href="#contact" class="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50">Contact</a>
+                                <button id="theme-toggle" class="ml-auto inline-flex items-center rounded-md border border-slate-300 px-3 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50" title="Toggle theme" aria-label="Toggle theme">
+                                    Toggle Theme
+                                </button>
+                        </div>
+                    </div>
+                    <div class="order-first md:order-last">
+                                                            <picture>
+                                                                <img src="assets/hero.svg" alt="Hero image" width="1200" height="600" class="w-full h-56 sm:h-72 md:h-96 object-cover rounded-lg shadow" loading="eager" />
+                                                            </picture>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- About -->
+        <section id="about" class="py-16 sm:py-20" data-aos="fade-up">
+            <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-center">About Me</h2>
+                <p class="mt-4 text-slate-700 text-base sm:text-lg leading-relaxed">
+                    This is a brief introduction about myself. I enjoy building accessible, performant web experiences.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+            <section id="skills" class="py-16 sm:py-20 bg-slate-50" data-aos="fade-up">
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-center">Skills</h2>
+                    <div id="skills-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Injected by JS -->
+                </div>
+                    <div class="mt-10">
+                        <canvas id="skillsChart" height="240" aria-label="Skills proficiency chart" role="img"></canvas>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-16 sm:py-20" data-aos="fade-up">
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-center">Projects</h2>
+                <div id="projects-grid" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+            <section id="contact" class="py-16 sm:py-20 bg-slate-50" data-aos="fade-up">
+                <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-center">Contact</h2>
+                    <p class="mt-4 text-slate-700 text-center">Feel free to reach out!</p>
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-8 grid grid-cols-1 gap-4 max-w-xl mx-auto bg-white p-6 rounded-md shadow">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p class="hidden">
+                            <label>Don’t fill this out: <input name="bot-field" /></label>
+                        </p>
+                        <label class="block">
+                            <span class="text-sm text-slate-700">Name</span>
+                            <input name="name" required class="mt-1 w-full border border-slate-300 rounded-md px-3 py-2" />
+                        </label>
+                        <label class="block">
+                            <span class="text-sm text-slate-700">Email</span>
+                            <input type="email" name="email" required class="mt-1 w-full border border-slate-300 rounded-md px-3 py-2" />
+                        </label>
+                        <label class="block">
+                            <span class="text-sm text-slate-700">Message</span>
+                            <textarea name="message" rows="4" required class="mt-1 w-full border border-slate-300 rounded-md px-3 py-2"></textarea>
+                        </label>
+                        <button type="submit" class="inline-flex items-center justify-center rounded-md bg-blue-600 px-5 py-2.5 text-white text-sm font-medium hover:bg-blue-700">Send</button>
+                    </form>
+                </div>
+            </section>
+
+        <footer class="py-8 text-center text-slate-500 text-sm" data-aos="fade-up">
+            <p>&copy; <span id="year"></span> My Portfolio</p>
+        </footer>
+
+        <!-- AOS and Chart.js -->
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+        <script src="js/main.js" type="module"></script>
+            <script>
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/sw.js').catch(() => {});
+                    });
+                }
+            </script>
+    </body>
+</html>

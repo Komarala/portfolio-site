@@ -1,0 +1,20 @@
+[
+	{
+		"title": "Portfolio Website",
+		"description": "A responsive portfolio built with semantic HTML and Tailwind utility classes.",
+		"techStack": ["HTML", "TailwindCSS", "JavaScript"],
+		"imagePath": "assets/project1.svg"
+	},
+	{
+		"title": "E-commerce App",
+		"description": "A full-stack e-commerce prototype using React and Node.js.",
+		"techStack": ["React", "Node.js", "MongoDB"],
+		"imagePath": "assets/project2.svg"
+	},
+	{
+		"title": "Data Viz Dashboard",
+		"description": "An interactive dashboard for visualizing datasets.",
+		"techStack": ["Python", "D3.js", "Flask"],
+		"imagePath": "assets/project3.svg"
+	}
+]

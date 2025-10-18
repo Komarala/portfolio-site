@@ -1,0 +1,15 @@
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "categories:accessibility": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }],
+        "uses-http2": "warn",
+        "uses-rel-preconnect": "warn",
+        "uses-responsive-images": "warn",
+        "uses-text-compression": "warn"
+      }
+    }
+  }
+}

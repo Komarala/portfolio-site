@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "A personal portfolio site showcasing projects, skills, and contact information.",
+  "main": "index.html",
+  "scripts": {
+    "build": "tailwindcss build css/styles.css -o css/output.css",
+    "watch": "tailwindcss build css/styles.css -o css/output.css --watch",
+    "start": "live-server"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}

@@ -1,0 +1,75 @@
+/* Core Style Guide variables and light defaults */
+:root {
+	/* Colors */
+	--color-primary: #3b82f6; /* Tailwind blue-500 */
+	--color-primary-600: #2563eb; /* blue-600 */
+	--color-secondary: #64748b; /* slate-500 */
+	--color-accent: #22c55e; /* green-500 */
+	--color-text: #0f172a; /* slate-900 */
+	--color-muted: #475569; /* slate-600 */
+	--color-bg: #ffffff;
+	--color-surface: #f8fafc; /* slate-50 */
+
+	/* Typography */
+		--font-sans: 'Inter var', 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+		Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji",
+		"Segoe UI Emoji";
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace;
+
+	/* Sizing & Spacing */
+	--radius-sm: 0.375rem; /* 6px */
+	--radius-md: 0.5rem;   /* 8px */
+	--radius-lg: 0.75rem;  /* 12px */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+}
+
+/* Self-hosted font (WOFF2) */
+@font-face {
+	font-family: 'Inter var';
+	src: url('../assets/fonts/Inter-Variable.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Inter';
+	src: url('../assets/fonts/Inter-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Minimal baseline to use variables even without Tailwind build */
+html, body { color: var(--color-text); background: var(--color-bg); font-family: var(--font-sans); }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Surface helper uses CSS variables to support theming */
+.surface { background: var(--color-surface); }
+.text-muted { color: var(--color-muted); }
+
+/* Dark mode: override variables */
+body.dark-mode {
+	--color-bg: #0b1220;         /* deep navy */
+	--color-surface: #0f172a;    /* slate-900 */
+	--color-text: #e5e7eb;       /* slate-200 */
+	--color-muted: #94a3b8;      /* slate-400 */
+	--color-primary: #60a5fa;    /* blue-400 */
+	--color-primary-600: #3b82f6;/* blue-500 */
+	--color-secondary: #94a3b8;  /* slate-400 */
+}
+
+/* Minimal Tailwind-class overrides in dark mode for better contrast */
+body.dark-mode .text-slate-900 { color: var(--color-text) !important; }
+body.dark-mode .text-slate-700 { color: var(--color-text) !important; }
+body.dark-mode .text-slate-600 { color: var(--color-muted) !important; }
+body.dark-mode .bg-white { background-color: var(--color-surface) !important; }
+body.dark-mode .border-slate-300 { border-color: #334155 !important; }
+body.dark-mode .bg-blue-600 { background-color: var(--color-primary-600) !important; }
+
+

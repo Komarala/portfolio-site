@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "lts/*"
+
+# Optional security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
