@@ -1,17 +1,18 @@
-const CACHE_NAME = 'portfolio-cache-v1';
+const CACHE_NAME = 'portfolio-cache-v2';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/css/styles.css',
-  '/js/main.js',
-  '/assets/hero.svg',
-  '/assets/project1.svg',
-  '/assets/project2.svg',
-  '/assets/project3.svg',
-  '/assets/icons/icon-192.svg',
-  '/assets/icons/icon-512.svg',
-  '/data/skills.json',
-  '/data/projects.json'
+  // Use relative paths so this works under subpaths (e.g., GitHub Pages)
+  'index.html',
+  'css/styles.css',
+  'js/main.js',
+  'assets/PicCV.jpg',
+  'assets/project1.svg',
+  'assets/project2.svg',
+  'assets/project3.svg',
+  'assets/icons/icon-192.svg',
+  'assets/icons/icon-512.svg',
+  'data/skills.json',
+  'data/projects.json',
+  'data/site.json'
 ];
 
 self.addEventListener('install', (event) => {
@@ -23,7 +24,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(
-      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+  keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
     ))
   );
 });

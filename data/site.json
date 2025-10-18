@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "title": "Welcome to My Portfolio",
+    "subtitle": "A showcase of my work, skills, and interests."
+  },
+"about": {
+  "title": "About Me",
+  "text": "Experienced Embedded Systems Software Programmer and AUTOSAR Engineer with a background at Robert Bosch. Skilled in Classic AUTOSAR, Functional testing and feature integration for OEMs like BMW and JLR. Currently pursuing a Master’s in Automotive Software Engineering at TU Chemnitz, with a thesis on AI-Based Source Code Generation from Requirements. Proficient in Python, Pandas, Tensor flow and C++. Passionate about sustainable tech—developed a solar-wind hybrid electric vehicle prototype. Fluent in English, with intermediate German proficiency and a strong drive to innovate for a better tomorrow."
+},
+  "skills": {
+    "title": "Skills"
+  },
+  "projects": {
+    "title": "Projects"
+  },
+  "contact": {
+    "title": "Contact",
+    "text": "Feel free to reach out!"
+  }
+}

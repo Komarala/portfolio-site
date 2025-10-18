@@ -53,6 +53,38 @@ img { max-width: 100%; height: auto; display: block; }
 .surface { background: var(--color-surface); }
 .text-muted { color: var(--color-muted); }
 
+/* Follow system theme by default */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #0b1220;         /* deep navy */
+		--color-surface: #0f172a;    /* slate-900 */
+		--color-text: #e5e7eb;       /* slate-200 */
+		--color-muted: #94a3b8;      /* slate-400 */
+		--color-primary: #60a5fa;    /* blue-400 */
+		--color-primary-600: #3b82f6;/* blue-500 */
+		--color-secondary: #94a3b8;  /* slate-400 */
+	}
+	/* Map common utility colors to variables in dark mode */
+	.bg-white { background-color: var(--color-surface) !important; }
+	.text-slate-700 { color: var(--color-text) !important; }
+	.text-slate-600 { color: var(--color-muted) !important; }
+	.border-slate-300 { border-color: #334155 !important; }
+}
+
+/* Make native form controls match theme explicitly */
+input, textarea, select {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+}
+input::placeholder, textarea::placeholder { color: var(--color-muted); }
+@media (prefers-color-scheme: dark) {
+	input, textarea, select {
+		background-color: var(--color-surface);
+		color: var(--color-text);
+		border-color: #334155;
+	}
+}
+
 /* Dark mode: override variables */
 body.dark-mode {
 	--color-bg: #0b1220;         /* deep navy */

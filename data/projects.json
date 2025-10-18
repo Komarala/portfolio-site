@@ -6,15 +6,15 @@
 		"imagePath": "assets/project1.svg"
 	},
 	{
-		"title": "E-commerce App",
-		"description": "A full-stack e-commerce prototype using React and Node.js.",
+		"title": "Face Swapping Algorithm",
+		"description": "Prototype project for face swapping and color correction of generated images.",
 		"techStack": ["React", "Node.js", "MongoDB"],
 		"imagePath": "assets/project2.svg"
 	},
 	{
-		"title": "Data Viz Dashboard",
-		"description": "An interactive dashboard for visualizing datasets.",
-		"techStack": ["Python", "D3.js", "Flask"],
+		"title": "ChatGPT Bot",
+		"description": "A conversational AI chatbot powered by OpenAI's GPT-3.",
+		"techStack": ["Python", "OpenAI API"],
 		"imagePath": "assets/project3.svg"
 	}
 ]

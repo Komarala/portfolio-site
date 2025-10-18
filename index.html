@@ -18,7 +18,7 @@
         <!-- Open Graph -->
         <meta property="og:title" content="My Portfolio" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://example.com/assets/hero.svg" />
+        <meta property="og:image" content="https://example.com/assets/PicCV.jpg" />
         <meta property="og:url" content="https://example.com/" />
         <meta property="og:description" content="A responsive portfolio showcasing projects, skills, and contact info." />
 
@@ -26,13 +26,13 @@
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="My Portfolio" />
         <meta name="twitter:description" content="A responsive portfolio showcasing projects, skills, and contact info." />
-        <meta name="twitter:image" content="https://example.com/assets/hero.svg" />
+        <meta name="twitter:image" content="https://example.com/assets/PicCV.jpg" />
 
         <!-- Preload critical fonts -->
         <link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
         <!-- Preload LCP hero image -->
-        <link rel="preload" as="image" href="assets/hero.svg" imagesrcset="assets/hero.svg" type="image/svg+xml" />
+        <link rel="preload" as="image" href="assets/PicCV.jpg" imagesrcset="assets/PicCV.jpg" type="image/jpeg" />
             <!-- Tailwind via CDN for now to avoid local build issues -->
             <script src="https://cdn.tailwindcss.com"></script>
         <link href="css/styles.css" rel="stylesheet" />
@@ -49,23 +49,20 @@
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-24 sm:pb-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                        <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
                             Welcome to My Portfolio
                         </h1>
-                        <p class="mt-4 text-base sm:text-lg text-slate-600">
+                        <p id="hero-subtitle" class="mt-4 text-base sm:text-lg text-slate-600">
                             A showcase of my work, skills, and interests.
                         </p>
                         <div class="mt-6 flex gap-3">
-                            <a href="#projects" class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-white text-sm font-medium hover:bg-blue-700">View Projects</a>
-                            <a href="#contact" class="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50">Contact</a>
-                                <button id="theme-toggle" class="ml-auto inline-flex items-center rounded-md border border-slate-300 px-3 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50" title="Toggle theme" aria-label="Toggle theme">
-                                    Toggle Theme
-                                </button>
+                              <a href="#projects" class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-white text-sm font-medium hover:bg-blue-700">View Projects</a>
+                              <a href="#contact" class="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50">Contact</a>
                         </div>
                     </div>
                     <div class="order-first md:order-last">
                                                             <picture>
-                                                                <img src="assets/hero.svg" alt="Hero image" width="1200" height="600" class="w-full h-56 sm:h-72 md:h-96 object-cover rounded-lg shadow" loading="eager" />
+                                                                <img src="assets/PicCV.jpg" alt="Hero image" width="1200" height="600" class="w-full h-56 sm:h-72 md:h-96 object-cover rounded-lg shadow" loading="eager" />
                                                             </picture>
                     </div>
                 </div>
@@ -75,8 +72,8 @@
         <!-- About -->
         <section id="about" class="py-16 sm:py-20" data-aos="fade-up">
             <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-semibold text-center">About Me</h2>
-                <p class="mt-4 text-slate-700 text-base sm:text-lg leading-relaxed">
+                <h2 id="about-title" class="text-2xl sm:text-3xl font-semibold text-center">About Me</h2>
+                <p id="about-text" class="mt-4 text-slate-700 text-base sm:text-lg leading-relaxed">
                     This is a brief introduction about myself. I enjoy building accessible, performant web experiences.
                 </p>
             </div>
@@ -85,7 +82,7 @@
         <!-- Skills -->
             <section id="skills" class="py-16 sm:py-20 bg-slate-50" data-aos="fade-up">
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-semibold text-center">Skills</h2>
+                <h2 id="skills-title" class="text-2xl sm:text-3xl font-semibold text-center">Skills</h2>
                     <div id="skills-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Injected by JS -->
                 </div>
@@ -98,7 +95,7 @@
         <!-- Projects -->
         <section id="projects" class="py-16 sm:py-20" data-aos="fade-up">
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-semibold text-center">Projects</h2>
+                <h2 id="projects-title" class="text-2xl sm:text-3xl font-semibold text-center">Projects</h2>
                 <div id="projects-grid" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Injected by JS -->
                 </div>
@@ -108,8 +105,8 @@
         <!-- Contact -->
             <section id="contact" class="py-16 sm:py-20 bg-slate-50" data-aos="fade-up">
                 <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-2xl sm:text-3xl font-semibold text-center">Contact</h2>
-                    <p class="mt-4 text-slate-700 text-center">Feel free to reach out!</p>
+                    <h2 id="contact-title" class="text-2xl sm:text-3xl font-semibold text-center">Contact</h2>
+                    <p id="contact-text" class="mt-4 text-slate-700 text-center">Feel free to reach out!</p>
                     <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-8 grid grid-cols-1 gap-4 max-w-xl mx-auto bg-white p-6 rounded-md shadow">
                         <input type="hidden" name="form-name" value="contact">
                         <p class="hidden">
@@ -143,7 +140,7 @@
             <script>
                 if ('serviceWorker' in navigator) {
                     window.addEventListener('load', () => {
-                        navigator.serviceWorker.register('/sw.js').catch(() => {});
+                        navigator.serviceWorker.register('./sw.js').catch(() => {});
                     });
                 }
             </script>

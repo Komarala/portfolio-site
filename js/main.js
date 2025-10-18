@@ -4,6 +4,39 @@ async function fetchJSON(path) {
   return res.json();
 }
 
+function setTextById(id, text) {
+  const el = typeof id === 'string' ? document.getElementById(id) : null;
+  if (el && typeof text === 'string') el.textContent = text;
+}
+
+function applySiteContent(site) {
+  if (!site) return;
+  // Hero
+  if (site.hero) {
+    setTextById('hero-title', site.hero.title);
+    setTextById('hero-subtitle', site.hero.subtitle);
+    if (site.hero.image) {
+      const heroImg = document.querySelector('#hero picture img');
+      if (heroImg) {
+        heroImg.src = site.hero.image;
+        // Optional: update preload? (can’t change link preload reliably at runtime)
+      }
+    }
+  }
+  // About
+  if (site.about) {
+    setTextById('about-title', site.about.title);
+    setTextById('about-text', site.about.text);
+  }
+  // Section headings
+  if (site.skills && site.skills.title) setTextById('skills-title', site.skills.title);
+  if (site.projects && site.projects.title) setTextById('projects-title', site.projects.title);
+  if (site.contact) {
+    setTextById('contact-title', site.contact.title);
+    setTextById('contact-text', site.contact.text);
+  }
+}
+
 function skillItem({ name, proficiency }) {
   const pct = Math.max(0, Math.min(100, Number(proficiency) || 0));
   return `
@@ -124,25 +157,18 @@ async function render() {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Theme: restore persisted preference
+  // Site strings from JSON
   try {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      document.body.classList.add('dark-mode');
-    } else if (saved !== 'light') {
-      // No saved preference: follow system
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (prefersDark) document.body.classList.add('dark-mode');
-    }
-  } catch {}
-  const toggle = document.getElementById('theme-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      try {
-        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-      } catch {}
-      // Rebuild chart to update colors
+    const site = await fetchJSON('data/site.json');
+  applySiteContent(site);
+  } catch (e) {
+    console.error(e);
+  }
+
+  // Follow system theme automatically; rebuild visuals on preference changes
+  const media = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  if (media && typeof media.addEventListener === 'function') {
+    media.addEventListener('change', () => {
       if (window.__skillsData) buildSkillsChart(window.__skillsData);
       if (window.AOS) window.AOS.refreshHard();
     });
