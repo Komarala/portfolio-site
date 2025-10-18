@@ -1,3 +1,32 @@
+/* Chrome-like forced dark mode logic for maximum contrast */
+@media (prefers-color-scheme: dark) {
+	html, body, .bg-white, .bg-slate-50, .surface {
+		background-color: #181a1b !important; /* Chrome's dark mode base */
+		color: #e8eaed !important;
+	}
+	.text-slate-900, .text-slate-700, .text-slate-600, .text-muted, h1, h2, h3, h4, h5, h6, p, span, label, li, dt, dd, th, td {
+		color: #e8eaed !important;
+	}
+	.border-slate-300, input, textarea, select, .border, .rounded-md, .shadow {
+		border-color: #44484b !important;
+		background-color: #232629 !important;
+		color: #e8eaed !important;
+	}
+	.bg-blue-600, .hover\:bg-blue-700:hover, .bg-primary, .btn-primary {
+		background-color: #2563eb !important;
+		color: #fff !important;
+	}
+	.text-white, .btn-primary, .btn, button, a {
+		color: #fff !important;
+	}
+	.hover\:bg-slate-50:hover {
+		background-color: #232629 !important;
+	}
+	::selection {
+		background: #2563eb !important;
+		color: #fff !important;
+	}
+}
 /* Core Style Guide variables and light defaults */
 :root {
 	/* Colors */
@@ -97,11 +126,32 @@ body.dark-mode {
 }
 
 /* Minimal Tailwind-class overrides in dark mode for better contrast */
-body.dark-mode .text-slate-900 { color: var(--color-text) !important; }
-body.dark-mode .text-slate-700 { color: var(--color-text) !important; }
-body.dark-mode .text-slate-600 { color: var(--color-muted) !important; }
-body.dark-mode .bg-white { background-color: var(--color-surface) !important; }
-body.dark-mode .border-slate-300 { border-color: #334155 !important; }
-body.dark-mode .bg-blue-600 { background-color: var(--color-primary-600) !important; }
+
+body.dark-mode .text-slate-900,
+body.dark-mode .text-slate-700 {
+	color: var(--color-text) !important;
+}
+body.dark-mode .text-slate-600 {
+	color: var(--color-muted) !important;
+}
+body.dark-mode .bg-white,
+body.dark-mode .bg-slate-50 {
+	background-color: var(--color-surface) !important;
+}
+body.dark-mode .border-slate-300 {
+	border-color: #334155 !important;
+}
+body.dark-mode .bg-blue-600 {
+	background-color: var(--color-primary-600) !important;
+}
+body.dark-mode .text-white {
+	color: #fff !important;
+}
+body.dark-mode .hover\:bg-slate-50:hover {
+	background-color: #1e293b !important; /* slate-800 for hover */
+}
+body.dark-mode .hover\:bg-blue-700:hover {
+	background-color: #2563eb !important; /* blue-600 for hover */
+}
 
 

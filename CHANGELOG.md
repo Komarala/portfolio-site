@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [1.1.2] - 2025-10-18
+### Fixed
+- All content now fully visible in dark theme using Chrome-like forced dark mode logic (high-contrast backgrounds and text, overrides for all major elements)
+
 ## [1.1.1] - 2025-10-18
 ### Fixed
 - JSON not reflecting in UI in some cases due to stale service worker cache; bumped cache and added `data/site.json` to precache
