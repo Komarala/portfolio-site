@@ -17,10 +17,8 @@ jobs:
             echo "SITE_URL secret is not set. Configure it in GitHub repo settings > Secrets and variables > Actions."
             exit 1
           fi
-      - name: Ensure Lighthouse config is in expected path
-        run: |
-          mkdir -p /home/runner/work/portfolio-site/portfolio-site
-          cp "$GITHUB_WORKSPACE/.lighthouserc.json" /home/runner/work/portfolio-site/portfolio-site/.lighthouserc.json
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
