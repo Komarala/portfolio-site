@@ -13,6 +13,7 @@ function applySiteContent(site) {
   if (!site) return;
   // Hero
   if (site.hero) {
+    setTextById('hero-name', site.hero.name);
     setTextById('hero-title', site.hero.title);
     setTextById('hero-subtitle', site.hero.subtitle);
     if (site.hero.image) {
@@ -27,6 +28,39 @@ function applySiteContent(site) {
   if (site.about) {
     setTextById('about-title', site.about.title);
     setTextById('about-text', site.about.text);
+  }
+  // KPI
+  if (Array.isArray(site.kpi)) {
+    const kpiGrid = document.getElementById('kpi-grid');
+    if (kpiGrid) {
+      kpiGrid.innerHTML = site.kpi
+        .map(({ label, value }) => `
+          <div class="bg-white rounded-lg shadow px-4 py-5 flex flex-col items-center justify-center text-center">
+            <div class="text-2xl sm:text-3xl font-semibold text-blue-600">${value}</div>
+            <div class="mt-1 text-xs sm:text-sm text-slate-600">${label}</div>
+          </div>
+        `)
+        .join('');
+    }
+  }
+  // Experience
+  if (site.experience && Array.isArray(site.experience.items)) {
+    setTextById('experience-title', site.experience.title || 'Experience');
+    const timeline = document.getElementById('experience-timeline');
+    if (timeline) {
+      timeline.innerHTML = site.experience.items
+        .map(({ period, company, location, role, bullets = [] }) => `
+          <article class="relative pl-6 border-l border-slate-200">
+            <div class="absolute -left-[9px] top-2 w-3 h-3 rounded-full bg-blue-500"></div>
+            <div class="text-xs font-medium text-slate-500">${period} · ${location}</div>
+            <h3 class="mt-1 text-base sm:text-lg font-semibold text-slate-900">${role} · ${company}</h3>
+            <ul class="mt-2 list-disc list-inside space-y-1 text-sm text-slate-700">
+              ${bullets.map(b => `<li>${b}</li>`).join('')}
+            </ul>
+          </article>
+        `)
+        .join('');
+    }
   }
   // Section headings
   if (site.skills && site.skills.title) setTextById('skills-title', site.skills.title);
@@ -52,7 +86,7 @@ function skillItem({ name, proficiency }) {
   `;
 }
 
-function projectCard({ title, description, techStack = [], imagePath }) {
+function projectCard({ title, description, techStack = [], imagePath, githubUrl, demoUrl }) {
   const tech = techStack.join(', ');
   const ext = (imagePath || '').split('.').pop()?.toLowerCase();
   let media = '';
@@ -76,12 +110,21 @@ function projectCard({ title, description, techStack = [], imagePath }) {
         <h3 class="text-lg font-semibold text-slate-900">${title}</h3>
         <p class="mt-2 text-slate-600 text-sm">${description}</p>
         <p class="mt-3 text-slate-500 text-xs">Tech: ${tech}</p>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          ${githubUrl ? `<a href="${githubUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
+              <span>GitHub</span>
+            </a>` : ''}
+          ${demoUrl ? `<a href="${demoUrl}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-900 text-white hover:bg-slate-800">
+              <span>Live Demo</span>
+            </a>` : ''}
+        </div>
       </div>
     </article>
   `;
 }
 
 let skillsChartRef = null;
+let mlopsChartRef = null;
 
 function buildSkillsChart(skills) {
   if (!window.Chart) return;
@@ -152,6 +195,54 @@ function buildSkillsChart(skills) {
   });
 }
 
+function buildMlopsProfileChart(mlopsProfile) {
+  if (!window.Chart || !mlopsProfile || !Array.isArray(mlopsProfile.axes)) return;
+  const ctx = document.getElementById('mlopsProfileChart');
+  if (!ctx) return;
+  if (mlopsChartRef) {
+    mlopsChartRef.destroy();
+    mlopsChartRef = null;
+  }
+  const labels = mlopsProfile.axes.map(a => a.label);
+  const data = mlopsProfile.axes.map(a => Number(a.value) || 0);
+  mlopsChartRef = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'MLOps Profile',
+          data,
+          backgroundColor: 'rgba(37, 99, 235, 0.15)',
+          borderColor: getComputedStyle(document.body).getPropertyValue('--color-primary-600').trim() || '#2563eb',
+          borderWidth: 2,
+          pointBackgroundColor: '#2563eb',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+         r: {
+          angleLines: { color: '#e5e7eb' },
+          grid: { color: '#e5e7eb' },
+          suggestedMin: 0,
+          suggestedMax: 100,
+          ticks: { display: false },
+          pointLabels: {
+            color: getComputedStyle(document.body).getPropertyValue('--color-muted').trim() || '#64748b',
+            font: { size: 10 },
+          },
+        },
+      },
+      plugins: {
+        legend: { display: false },
+      },
+    },
+  });
+}
+
 async function render() {
   // Year
   const yearEl = document.getElementById('year');
@@ -160,7 +251,11 @@ async function render() {
   // Site strings from JSON
   try {
     const site = await fetchJSON('data/site.json');
-  applySiteContent(site);
+    applySiteContent(site);
+    if (site.mlopsProfile) {
+      window.__mlopsProfile = site.mlopsProfile;
+      buildMlopsProfileChart(site.mlopsProfile);
+    }
   } catch (e) {
     console.error(e);
   }
@@ -170,6 +265,7 @@ async function render() {
   if (media && typeof media.addEventListener === 'function') {
     media.addEventListener('change', () => {
       if (window.__skillsData) buildSkillsChart(window.__skillsData);
+      if (window.__mlopsProfile) buildMlopsProfileChart(window.__mlopsProfile);
       if (window.AOS) window.AOS.refreshHard();
     });
   }
@@ -197,13 +293,53 @@ async function render() {
   // Projects
   try {
     const projects = await fetchJSON('data/projects.json');
+    window.__projects = Array.isArray(projects) ? projects : [];
     const grid = document.getElementById('projects-grid');
-    if (Array.isArray(projects) && grid) {
-      grid.innerHTML = projects.map(projectCard).join('');
+    if (grid) {
+      grid.innerHTML = window.__projects.map(projectCard).join('');
+    }
+    // Project filters
+    const filterButtons = document.querySelectorAll('.projects-filter');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const value = btn.getAttribute('data-filter');
+        filterButtons.forEach(b => b.classList.remove('active', 'bg-slate-900', 'text-white'));
+        btn.classList.add('active', 'bg-slate-900', 'text-white');
+        if (!grid) return;
+        const filtered = value === 'all'
+          ? window.__projects
+          : window.__projects.filter(p => Array.isArray(p.categories) && p.categories.includes(value));
+        grid.innerHTML = filtered.map(projectCard).join('');
+      });
+    });
+    // GitHub updates strip (ticker style using projects data)
+    const updatesStrip = document.getElementById('github-updates-strip');
+    if (updatesStrip && window.__projects.length) {
+      const items = window.__projects
+        .map(p => {
+          const repoLabel = (p.githubUrl || '').split('/').slice(-1)[0] || 'repo';
+          return `<span class="inline-flex items-center gap-1 mr-8">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>${p.title} <span class="text-slate-400">(${repoLabel})</span></span>
+            </span>`;
+        })
+        .join('');
+      // duplicate content for seamless scrolling effect
+      updatesStrip.innerHTML = items + items;
     }
   } catch (e) {
     console.error(e);
   }
 }
+
+// Simple live widget: keep timestamp ticking every second
+setInterval(() => {
+  const el = document.getElementById('live-timestamp');
+  if (!el) return;
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2, '0');
+  const mm = String(now.getMinutes()).padStart(2, '0');
+  el.textContent = `${hh}:${mm}`;
+}, 1000);
 
 render();

@@ -1,14 +1,95 @@
 {
   "hero": {
-    "title": "Welcome to My Portfolio",
-    "subtitle": "A showcase of my work, skills, and interests."
+    "name": "Hemanth Yadav K",
+    "title": "MLOps Engineer",
+    "subtitle": "AI-first software engineer focused on reliable MLOps, Agents, and Kubernetes."
   },
-"about": {
-  "title": "About Me",
-  "text": "Experienced Embedded Systems Software Programmer and AUTOSAR Engineer with a background at Robert Bosch. Skilled in Classic AUTOSAR, Functional testing and feature integration for OEMs like BMW and JLR. Currently pursuing a Master’s in Automotive Software Engineering at TU Chemnitz, with a thesis on AI-Based Source Code Generation from Requirements. Proficient in Python, Pandas, Tensor flow and C++. Passionate about sustainable tech—developed a solar-wind hybrid electric vehicle prototype. Fluent in English, with intermediate German proficiency and a strong drive to innovate for a better tomorrow."
-},
+  "about": {
+    "title": "About Me",
+    "text": "MLOps-oriented Software Engineer with hands-on experience in AI-assisted development workflows and operating AI services in production. I focus on reliable deployment of LLM/RAG services on Kubernetes, automated ML lifecycles (data → training → validation → deployment → monitoring), and observability with Prometheus and Grafana. I think in architectures (scalability, security, integration) and work in a test-driven way with clear quality and release gates."
+  },
+  "kpi": [
+    {
+      "label": "Years in Software Engineering",
+      "value": "7+"
+    },
+    {
+      "label": "Years in AI & MLOps",
+      "value": "3+"
+    },
+    {
+      "label": "Production & Lab Projects",
+      "value": "10+"
+    },
+    {
+      "label": "Cross-country / Cross-team Work",
+      "value": "5+"
+    }
+  ],
   "skills": {
     "title": "Skills"
+  },
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "period": "11/2023 – Present",
+        "company": "IAV GmbH",
+        "location": "Dresden, Germany",
+        "role": "Working Student / Master's Thesis (AI)",
+        "bullets": [
+          "Built real-time data ingestion into an AI agent framework that generates source code and unit tests from requirements, with validation gates and reproducible runs.",
+          "Containerized services and integrated GitLab CI (lint/test/build, artifact & version tagging, environment promotion).",
+          "Designed prompt and context controls to improve LLM determinism; added evaluation metrics and drift checks for quality in production.",
+          "Created Grafana-style dashboards and structured logs; documented SLOs and alerting rules."
+        ]
+      },
+      {
+        "period": "03/2022 – 10/2022",
+        "company": "Tessolve Semiconductors",
+        "location": "Bangalore, India",
+        "role": "AUTOSAR Engineer",
+        "bullets": [
+          "Developed CAN diagnostic frames and supported integration testing in an AUTOSAR Classic environment.",
+          "Strengthened pipeline steps for test automation and code review gates, catching regressions earlier."
+        ]
+      },
+      {
+        "period": "09/2018 – 03/2022",
+        "company": "Bosch",
+        "location": "Coimbatore, India",
+        "role": "Senior / Software Engineer",
+        "bullets": [
+          "Integrated components for JLR programs under automotive quality standards (e.g., MISRA-C) in collaboration with Dev, QA, and Systems teams.",
+          "Performed root-cause analysis in the Mode Manager (sleep/wake-up) and base software configuration; automated function and microcontroller I/O tests."
+        ]
+      }
+    ]
+  },
+  "mlopsProfile": {
+    "title": "MLOps Profile",
+    "axes": [
+      {
+        "label": "Software Engineering",
+        "value": 85
+      },
+      {
+        "label": "Deployment & Infrastructure",
+        "value": 80
+      },
+      {
+        "label": "Observability",
+        "value": 75
+      },
+      {
+        "label": "Data & ML Lifecycle",
+        "value": 70
+      },
+      {
+        "label": "AI / LLM & RAG",
+        "value": 80
+      }
+    ]
   },
   "projects": {
     "title": "Projects"

@@ -1,20 +1,29 @@
 [
 	{
-		"title": "Portfolio Website",
-		"description": "A responsive portfolio built with semantic HTML and Tailwind utility classes.",
-		"techStack": ["HTML", "TailwindCSS", "JavaScript"],
+		"title": "Kubernetes-based RAG Platform (Lab)",
+		"description": "Containerized retriever, LLM, vector store, and API for a RAG pipeline; deployed with GitOps (Argo CD / Flux) including automatic rollback and observability.",
+		"techStack": ["Python", "Kubernetes", "Docker", "Argo CD", "Vector DB"],
+		"categories": ["MLOps", "AI"],
+		"githubUrl": "https://github.com/Komarala/k8s-rag-platform",
+		"demoUrl": "#",
 		"imagePath": "assets/project1.svg"
 	},
 	{
-		"title": "Face Swapping Algorithm",
-		"description": "Prototype project for face swapping and color correction of generated images.",
-		"techStack": ["React", "Node.js", "MongoDB"],
+		"title": "Dagster Data & Model Pipeline (Lab)",
+		"description": "Orchestrated pipeline for data ingestion, schema/statistical validation, and feature engineering with Dagster, triggered and monitored via CI.",
+		"techStack": ["Python", "Dagster", "CI/CD", "Data Validation"],
+		"categories": ["Data", "MLOps"],
+		"githubUrl": "https://github.com/Komarala/dagster-ml-pipeline",
+		"demoUrl": "#",
 		"imagePath": "assets/project2.svg"
 	},
 	{
-		"title": "ChatGPT Bot",
-		"description": "A conversational AI chatbot powered by OpenAI's GPT-3.",
-		"techStack": ["Python", "OpenAI API"],
+		"title": "AI-driven Stock Portfolio Summarizer (AI + MCP)",
+		"description": "LLM-powered service that summarizes portfolio holdings, sector exposure, and risk using an MCP server to connect broker and market data sources; deployed on Kubernetes with metrics and logs.",
+		"techStack": ["Python", "LLM", "MCP", "Kubernetes", "GitOps"],
+		"categories": ["AI", "MLOps"],
+		"githubUrl": "https://github.com/Komarala/ai-portfolio-summarizer",
+		"demoUrl": "#",
 		"imagePath": "assets/project3.svg"
 	}
 ]
