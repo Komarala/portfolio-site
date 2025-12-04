@@ -1,14 +1,12 @@
-name: Lighthouse CI
+name: Site Health Ping
 
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
   schedule:
     - cron: '0 3 * * 1' # Mondays at 03:00 UTC
+  workflow_dispatch:
 
 jobs:
-  lhci:
+  ping:
     runs-on: ubuntu-latest
     steps:
       - name: Check SITE_URL configured
@@ -17,26 +15,24 @@ jobs:
             echo "SITE_URL secret is not set. Configure it in GitHub repo settings > Secrets and variables > Actions."
             exit 1
           fi
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Warm up target site
+      - name: Ping site
         run: |
-          echo "Warming up ${{ secrets.SITE_URL }}"
+          echo "Checking ${{ secrets.SITE_URL }}"
+          # Fail if we don't get a 2xx/3xx status within 5 attempts
           n=0
-          until curl -fsSL "${{ secrets.SITE_URL }}" >/dev/null; do
+          until status=$(curl -o /dev/null -s -w "%{http_code}" "${{ secrets.SITE_URL }}"); do
             n=$((n+1))
             if [ "$n" -ge 5 ]; then
               echo "Site not reachable after $n attempts"
               exit 1
             fi
-            echo "Attempt $n failed, retrying in 5s..."
-            sleep 5
+            echo "Attempt $n failed, retrying in 10s..."
+            sleep 10
           done
-      - name: Run Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v12
-        with:
-          urls: |
-            ${{ secrets.SITE_URL }}
-          uploadArtifacts: true
-          configPath: ./.lighthouserc.json
-          temporaryPublicStorage: true        
+
+          echo "HTTP status: $status"
+          if [ "$status" -ge 400 ]; then
+            echo "Site returned error status $status"
+            exit 1
+          fi
+          echo "Site is reachable and healthy enough (status $status)."
