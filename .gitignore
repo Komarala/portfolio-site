@@ -14,8 +14,8 @@ build/
 out/
 
 # Env / secrets
-.env
-.env.*
+.venv
+.venv.*
 *.local
 
 # Coverage / reports
