@@ -36,22 +36,11 @@
         "period": "11/2023 – Present",
         "company": "IAV GmbH",
         "location": "Dresden, Germany",
-        "role": "Working Student / Master's Thesis (AI)",
+        "role": "Student Employee / Master's Thesis (AI)",
         "bullets": [
-          "Built real-time data ingestion into an AI agent framework that generates source code and unit tests from requirements, with validation gates and reproducible runs.",
+          "Built real-time data ingestion into an AI agent framework that generates source code from requirements, with validation gates and reproducible runs.",
           "Containerized services and integrated GitLab CI (lint/test/build, artifact & version tagging, environment promotion).",
-          "Designed prompt and context controls to improve LLM determinism; added evaluation metrics and drift checks for quality in production.",
-          "Created Grafana-style dashboards and structured logs; documented SLOs and alerting rules."
-        ]
-      },
-      {
-        "period": "03/2022 – 10/2022",
-        "company": "Tessolve Semiconductors",
-        "location": "Bangalore, India",
-        "role": "AUTOSAR Engineer",
-        "bullets": [
-          "Developed CAN diagnostic frames and supported integration testing in an AUTOSAR Classic environment.",
-          "Strengthened pipeline steps for test automation and code review gates, catching regressions earlier."
+          "Designed prompt and context controls to improve LLM determinism; added evaluation metrics and drift checks for quality in production."
         ]
       },
       {

@@ -50,8 +50,7 @@ function applySiteContent(site) {
     if (timeline) {
       timeline.innerHTML = site.experience.items
         .map(({ period, company, location, role, bullets = [] }) => `
-          <article class="relative pl-6 border-l border-slate-200">
-            <div class="absolute -left-[9px] top-2 w-3 h-3 rounded-full bg-blue-500"></div>
+          <article class="relative pl-6 border-l border-slate-200">            
             <div class="text-xs font-medium text-slate-500">${period} · ${location}</div>
             <h3 class="mt-1 text-base sm:text-lg font-semibold text-slate-900">${role} · ${company}</h3>
             <ul class="mt-2 list-disc list-inside space-y-1 text-sm text-slate-700">
@@ -248,6 +247,23 @@ async function render() {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Timezone
+  const timeElement = document.getElementById('live-timestamp');
+
+  function updateECTTime() {
+    const now = new Date();
+    const formatter = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Europe/Zurich', // Central European Time
+    });
+    timeElement.textContent = formatter.format(now);
+  }
+
+  updateECTTime();
+  setInterval(updateECTTime, 60_000);
+
   // Site strings from JSON
   try {
     const site = await fetchJSON('data/site.json');
@@ -332,6 +348,55 @@ async function render() {
   }
 }
 
+// Floating tiles
+function initFloatingTiles() {
+  // Dismissible first-load tile (uses localStorage flag)
+  const storageKey = 'hai_floating_ad_dismissed_v1';
+  if (!localStorage.getItem(storageKey)) {
+    const ad = document.createElement('div');
+    ad.className = 'floating-ad';
+    ad.innerHTML = `
+      <div class="floating-ad-header">
+        <div class="floating-ad-title">Welcome to hAI</div>
+        <button type="button" aria-label="Close">
+          &times;
+        </button>
+      </div>
+      <div class="floating-ad-body">
+        Explore my work in MLOps, AI systems, and hands-on projects. Use the navigation above or jump straight into the AI game using the chat bubble.
+      </div>
+    `;
+    const closeBtn = ad.querySelector('button');
+    closeBtn.addEventListener('click', () => {
+      ad.classList.remove('floating-ad-show');
+      ad.classList.add('floating-ad-hide');
+      // localStorage.setItem(storageKey, '1');
+      setTimeout(() => ad.remove(), 200);
+    });
+    document.body.appendChild(ad);
+    // trigger macOS-like appear animation on next frame
+    requestAnimationFrame(() => {
+      ad.classList.add('floating-ad-show');
+    });
+  }
+
+  // Persistent chatbot-style floating button linking to hosted game
+  const chatBtn = document.createElement('button');
+  chatBtn.type = 'button';
+  chatBtn.className = 'chat-fab';
+  chatBtn.setAttribute('aria-label', 'Open AI game');
+  chatBtn.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5">
+      <path fill="currentColor" d="M4 4h16a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1.6.8L16 13H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/>
+    </svg>
+  `;
+  chatBtn.addEventListener('click', () => {
+    // TODO: replace with your actual hosted game URL
+    window.open('https://linguamate.netlify.app/', '_blank', 'noopener');
+  });
+  document.body.appendChild(chatBtn);
+}
+
 // Simple live widget: keep timestamp ticking every second
 setInterval(() => {
   const el = document.getElementById('live-timestamp');
@@ -342,4 +407,6 @@ setInterval(() => {
   el.textContent = `${hh}:${mm}`;
 }, 1000);
 
-render();
+render().then(() => {
+  initFloatingTiles();
+});

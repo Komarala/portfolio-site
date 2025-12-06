@@ -1,4 +1,8 @@
 /* Core Style Guide variables and light defaults */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
 	/* Colors – refreshed palette */
 	--color-primary: #1a73e8; /* Chrome/Google blue */
@@ -30,7 +34,7 @@
 }
 
 /* Self-hosted font (WOFF2) */
-@font-face {
+/* @font-face {
 	font-family: 'Inter var';
 	src: url('../assets/fonts/Inter-Variable.woff2') format('woff2');
 	font-weight: 100 900;
@@ -43,7 +47,7 @@
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
-}
+} */
 
 /* Minimal baseline to use variables even without Tailwind build */
 html, body { color: var(--color-text); background: var(--color-bg); font-family: var(--font-sans); }
@@ -110,6 +114,7 @@ img { max-width: 100%; height: auto; display: block; }
 	.text-slate-700 { color: var(--color-text) !important; }
 	.text-slate-600 { color: var(--color-muted) !important; }
 	.border-slate-300 { border-color: #5f6368 !important; }
+	.hover-color-slate-50:hover { background-color: #22c55e !important; }
 }
 
 /* Make native form controls match theme explicitly */
@@ -162,8 +167,86 @@ body.dark-mode .text-white {
 body.dark-mode .hover\:bg-slate-50:hover {
 	background-color: #1e293b !important; /* slate-800 for hover */
 }
-body.dark-mode .hover\:bg-blue-700:hover {
+body.dark-mode .hover\:bg-blue-700:hover,
+body.dark-mode .hover-color-slate-50:hover {
 	background-color: #2563eb !important; /* blue-600 for hover */
+}
+
+/* Floating tiles */
+
+.floating-ad {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.9);
+	max-width: 420px;
+	width: calc(100% - 3rem);
+	z-index: 50;
+	background-color: var(--color-surface);
+	color: var(--color-text);
+	border-radius: 0.75rem;
+	box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+	padding: 1.25rem 1.4rem 1.35rem;
+	border: 1px solid rgba(148, 163, 184, 0.45);
+	opacity: 0;
+	transition: opacity 220ms ease-out, transform 220ms ease-out;
+}
+
+.floating-ad-show {
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.floating-ad-hide {
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0.9);
+	pointer-events: none;
+}
+
+.floating-ad-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.35rem;
+}
+
+.floating-ad-title {
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.floating-ad-body {
+	font-size: 0.8rem;
+	color: var(--color-muted);
+}
+
+.floating-ad button {
+	border: none;
+	background: transparent;
+	color: var(--color-muted);
+	cursor: pointer;
+}
+
+.chat-fab {
+	position: fixed;
+	bottom: 1.5rem;
+	right: 1.5rem;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 9999px;
+	background: var(--color-primary-600);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	border: none;
+	cursor: pointer;
+	z-index: 40;
+}
+
+.chat-fab:hover {
+	filter: brightness(1.05);
 }
 
 

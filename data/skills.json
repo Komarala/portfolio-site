@@ -1,12 +1,10 @@
 [
 	{ "name": "Python", "proficiency": 95 },
-	{ "name": "Kubernetes", "proficiency": 85 },
 	{ "name": "Docker", "proficiency": 85 },
 	{ "name": "GitLab CI / Jenkins", "proficiency": 80 },
 	{ "name": "GitOps (Argo CD / Flux)", "proficiency": 80 },
 	{ "name": "Prometheus", "proficiency": 75 },
 	{ "name": "Grafana", "proficiency": 75 },
-	{ "name": "Dagster", "proficiency": 70 },
 	{ "name": "RAG / LLM Apps", "proficiency": 80 },
 	{ "name": "Data Validation & Model Evaluation", "proficiency": 70 }
 ]

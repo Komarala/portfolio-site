@@ -29,17 +29,25 @@
         <meta name="twitter:image" content="https://example.com/assets/PicCV.jpg" />
 
         <!-- Preload critical fonts -->
-        <link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+        <!-- <link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin> -->
+        
+        <!-- Inter font from CDN -->
+        <link rel="preconnect" href="https://rsms.me" crossorigin>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        
         <!-- Preload LCP hero image -->
         <link rel="preload" as="image" href="assets/PicCV.jpg" imagesrcset="assets/PicCV.jpg" type="image/jpeg" />
             <!-- Tailwind via CDN for now to avoid local build issues -->
             <script src="https://cdn.tailwindcss.com"></script>
         <link href="css/styles.css" rel="stylesheet" />
+        
+        <!-- Compiled Tailwind CSS (built via npm run build) -->
+        <!-- <link href="css/output.css" rel="stylesheet" /> -->
             <!-- AOS CSS -->
             <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
             <!-- Plausible Analytics (replace data-domain with your domain) -->
-            <script defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script>
+            <!-- <script defer data-domain="example.com" src="https://plausible.io/js/plausible.js"></script> -->
             <!-- PWA Manifest -->
             <link rel="manifest" href="/manifest.json" />
     </head>
@@ -66,11 +74,11 @@
                     </div>
                 </div>
                 <nav class="hidden sm:flex gap-4 text-sm text-slate-900">
-                    <a href="#about" class="hover:text-slate-900">About</a>
-                    <a href="#experience" class="hover:text-slate-900">Experience</a>
-                    <a href="#skills" class="hover:text-slate-900">Skills</a>
-                    <a href="#projects" class="hover:text-slate-900">Projects</a>
-                    <a href="#contact" class="hover:text-slate-900">Contact</a>
+                    <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                    <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
+                    <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
+                    <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+                    <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
                 </nav>
             </div>
         </header>
@@ -90,17 +98,17 @@
                         </p>
                         <div class="mt-6 flex gap-3">
                               <a href="#projects" class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-white text-sm font-medium hover:bg-blue-700">View Projects</a>
-                              <a href="#contact" class="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-slate-700 text-sm font-medium hover:bg-slate-50">Contact</a>
+                              <a href="#contact" class="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-white text-sm font-medium hover:bg-blue-700">Contact</a>
                         </div>
-                        <div id="live-widget" class="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-3 py-1 text-xs shadow">
+                        <div id="live-widget" class="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-3 py-1 text-sm shadow">
                             <span class="live-dot"></span>
                             <span>Local time · <span id="live-timestamp">--:--</span></span>
                         </div>
                     </div>
                     <div class="order-first md:order-last">
-                                                            <picture>
-                                                                <img src="assets/PicCV.jpg" alt="Hero image" width="1200" height="600" class="w-full h-56 sm:h-72 md:h-96 object-cover rounded-lg shadow" loading="eager" />
-                                                            </picture>
+                        <picture>
+                            <img src="assets/PicCV.jpg" alt="Hero image" width="1200" height="600" class="w-full h-56 sm:h-72 md:h-96 object-cover rounded-lg shadow-xl" loading="eager" />
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -139,9 +147,9 @@
             <section id="skills" class="py-16 sm:py-20 bg-slate-50" data-aos="fade-up">
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <h2 id="skills-title" class="text-2xl sm:text-3xl font-semibold text-center">Skills</h2>
-                    <div id="skills-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- <div id="skills-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> -->
                     <!-- Injected by JS -->
-                </div>
+                <!-- </div> -->
                     <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div class="h-64">
                             <canvas id="skillsChart" aria-label="Skills proficiency chart" role="img"></canvas>

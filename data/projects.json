@@ -1,28 +1,27 @@
 [
 	{
-		"title": "Kubernetes-based RAG Platform (Lab)",
-		"description": "Containerized retriever, LLM, vector store, and API for a RAG pipeline; deployed with GitOps (Argo CD / Flux) including automatic rollback and observability.",
-		"techStack": ["Python", "Kubernetes", "Docker", "Argo CD", "Vector DB"],
+		"title": "LinguaMate-Tutor (AI + Chatbot)",
+		"description": "End-to-end personal language tutor; deployed with Render(FastAPI), Netlify(Static HTML) including automatic rollback and observability.",
+		"techStack": ["Python", "JavaScript", "HTML", "Agent", "Netlify", "Render"],
 		"categories": ["MLOps", "AI"],
-		"githubUrl": "https://github.com/Komarala/k8s-rag-platform",
-		"demoUrl": "#",
+		"githubUrl": "https://github.com/Komarala/LinguaMate-Tutor",
+		"demoUrl": "https://linguamate.netlify.app/",
 		"imagePath": "assets/project1.svg"
 	},
 	{
-		"title": "Dagster Data & Model Pipeline (Lab)",
-		"description": "Orchestrated pipeline for data ingestion, schema/statistical validation, and feature engineering with Dagster, triggered and monitored via CI.",
-		"techStack": ["Python", "Dagster", "CI/CD", "Data Validation"],
+		"title": "MCP Job Search Pipeline (Data + MLOps)",
+		"description": "Orchestrated pipeline for data ingestion, schema/statistical validation, and a set of ready‑to‑use job search prompt agents using an MCP server.",
+		"techStack": ["Python", "MCP", "Data Validation"],
 		"categories": ["Data", "MLOps"],
-		"githubUrl": "https://github.com/Komarala/dagster-ml-pipeline",
-		"demoUrl": "#",
+		"githubUrl": "https://github.com/Komarala/Mcp_job_search",
 		"imagePath": "assets/project2.svg"
 	},
 	{
-		"title": "AI-driven Stock Portfolio Summarizer (AI + MCP)",
-		"description": "LLM-powered service that summarizes portfolio holdings, sector exposure, and risk using an MCP server to connect broker and market data sources; deployed on Kubernetes with metrics and logs.",
-		"techStack": ["Python", "LLM", "MCP", "Kubernetes", "GitOps"],
-		"categories": ["AI", "MLOps"],
-		"githubUrl": "https://github.com/Komarala/ai-portfolio-summarizer",
+		"title": "Personal Portfolio (Data)",
+		"description": "A performant, responsive personal portfolio with mobile‑first Tailwind styling, PWA support, dark mode, AOS animations, and Chart.js skills visualization.",
+		"techStack": ["HTML", "JavaScript", "GitOps"],
+		"categories": ["Data"],
+		"githubUrl": "https://github.com/Komarala/portfolio-site",
 		"demoUrl": "#",
 		"imagePath": "assets/project3.svg"
 	}

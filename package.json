@@ -4,8 +4,8 @@
   "description": "A personal portfolio site showcasing projects, skills, and contact information.",
   "main": "index.html",
   "scripts": {
-    "build": "tailwindcss build css/styles.css -o css/output.css",
-    "watch": "tailwindcss build css/styles.css -o css/output.css --watch",
+    "build": "tailwindcss -i css/styles.css -o css/output.css",
+    "watch": "tailwindcss -i css/styles.css -o css/output.css --watch",
     "start": "live-server"
   },
   "author": "Your Name",
